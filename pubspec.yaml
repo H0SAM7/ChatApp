@@ -40,6 +40,11 @@ dependencies:
   modal_progress_hud_nsn: ^0.5.1
   cloud_firestore: ^5.1.0
   url_launcher: ^6.3.0
+  uuid: ^4.4.2
+  smooth_page_indicator: ^1.2.0
+  flutter_native_splash: ^2.4.0
+  another_flutter_splash_screen: ^1.2.1
+  loading_indicator: ^3.1.1
 
 dev_dependencies:
   flutter_test:

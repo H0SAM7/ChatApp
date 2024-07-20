@@ -1,4 +1,3 @@
-import 'package:chat_app/constants.dart';
 import 'package:chat_app/model/message_model.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +11,7 @@ static String id='BubbleChat';
       alignment: Alignment.centerLeft,
       child: Container(
         decoration: BoxDecoration(
-            color: kPrimaryColor,
+            color: Color.fromARGB(255, 104, 132, 181),
             borderRadius: BorderRadius.only(
                 bottomRight: Radius.circular(16),
                 topLeft: Radius.circular(16),
@@ -35,7 +34,7 @@ final Message message;
       alignment: Alignment.centerRight,
       child: Container(
         decoration: BoxDecoration(
-            color: Color.fromARGB(199, 74, 135, 182),
+            color:Color.fromARGB(255, 139, 176, 195),
             borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(16),
                 topLeft: Radius.circular(16),

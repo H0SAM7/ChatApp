@@ -1,22 +1,21 @@
-import 'package:chat_app/constants.dart';
 import 'package:chat_app/helper/show_snackbar.dart';
-import 'package:chat_app/pages/chat_page.dart';
 import 'package:chat_app/pages/list_of_users_page.dart';
 import 'package:chat_app/pages/register_page.dart';
 import 'package:chat_app/widget/custom_button.dart';
 import 'package:chat_app/widget/custom_text_field.dart';
+import 'package:chat_app/widget/custom_progress_hub.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
-class HomePage extends StatefulWidget {
-  HomePage({super.key});
+class LoginPage extends StatefulWidget {
+  static String id='LoginPage';
+  LoginPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _LoginPageState extends State<LoginPage> {
   String? email;
   String? password;
   bool isloading = false;
@@ -26,27 +25,26 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     var x = MediaQuery.of(context).size.height;
 
-    return ModalProgressHUD(
+    return CustomProgressHUD(
+      
+      // progressIndicator: CustomLoadingIndicator(),
       inAsyncCall: isloading,
       child: Scaffold(
-        backgroundColor: kPrimaryColor,
+
         body: SingleChildScrollView(
           child: Form(
             key: FromKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: x * 0.11),
-                Image.asset('assets/images/scholar.png'),
-                Text(
-                  'Scolar Chat',
-                  style: TextStyle(
-                      fontFamily: 'Pacifico', fontSize: 35, color: Colors.white),
-                ),
-                SizedBox(height: x * 0.11),
+                SizedBox(height: x * 0.3),
+                
+                
+              
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: CustomTextField(
+                      icon: Icon(Icons.email,color: Colors.grey,),
                     label: 'Email',
                     hint: 'Enter your email',
                     onchage: (data) {
@@ -57,9 +55,12 @@ class _HomePageState extends State<HomePage> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: CustomTextField(
+               icon: Icon(Icons.lock,color: Colors.grey),
                     hide: true,
+                    passicon: true,
                     label: 'Password',
                     hint: 'Enter your password',
+                    
                     onchage: (data) {
                       password = data;
                     },
@@ -69,8 +70,11 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.only(top: 10, right: 8, left: 8),
                   child: CustomButton(
                     buttonName: 'LOGIN',
+                    txtcolor: Colors.white,
+                    color: Colors.lightBlueAccent,
                     onTap: () async {
                       isloading = true;
+                     
                       setState(() {});
                       if (FromKey.currentState!.validate()) {
                         try {
@@ -102,13 +106,13 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text('Don\'t have an account?',
-                        style: TextStyle(color: Colors.white)),
+                        style: TextStyle(color: Colors.black)),
                     TextButton(
                         onPressed: () {
                           Navigator.pushNamed(context, RegisterPage.id);
                         },
                         child: Text('REGISTER',
-                            style: TextStyle(color: Color(0xffC7EDE6))))
+                            style: TextStyle(color: Colors.lightBlueAccent)))
                   ],
                 ),
                 SizedBox(height: x * 0.15),
@@ -117,6 +121,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
+      
     );
   }
 
