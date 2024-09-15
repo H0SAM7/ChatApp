@@ -45,6 +45,8 @@ dependencies:
   flutter_native_splash: ^2.4.0
   another_flutter_splash_screen: ^1.2.1
   loading_indicator: ^3.1.1
+  bloc: ^8.1.4
+  flutter_bloc: ^8.1.6
 
 dev_dependencies:
   flutter_test:

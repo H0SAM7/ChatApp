@@ -31,7 +31,7 @@ class _ListOfUsersState extends State<ListOfUsers> {
   bool isLoading = false;
 
   // Loading indicator control
-  ChatProcessor processor = ChatProcessor();
+  // ChatProcessor processor = ChatProcessor();
 
   void _onItemTapped(int index) {
     setState(() {
@@ -113,7 +113,7 @@ class _ListOfUsersState extends State<ListOfUsers> {
                           padding:
                               EdgeInsets.only(top: 16, left: 16, right: 16),
                           child: TextField(
-                          //  autofocus: true,
+                           autofocus: true,
                             decoration: InputDecoration(
                               hintText: 'Search...',
                               border: InputBorder.none,
@@ -156,27 +156,27 @@ class _ListOfUsersState extends State<ListOfUsers> {
                         Expanded(
                           child: isLoading
                               ? Center(child: CustomLoadingIndicator())
-                              : ListView.builder(
-                                  itemCount: displayedUsers.length,
-                                  itemBuilder: (context, index) {
-                                    var userDoc = displayedUsers[index];
-                                    processor.processAndGetFirstMessages(
-                                        ChatPage.firstMessagesList);
-                                    Message? firstMessage =
-                                        processor.getFirstMessageForPair(
-                                            emaillogin, userDoc['email']);
+                              // : ListView.builder(
+                              //     itemCount: displayedUsers.length,
+                              //     itemBuilder: (context, index) {
+                              //       var userDoc = displayedUsers[index];
+                              //       // processor.processAndGetFirstMessages(
+                              //       //     ChatPage.firstMessagesList);
+                              //       Message? firstMessage =
+                              //           processor.getFirstMessageForPair(
+                              //               emaillogin, userDoc['email']);
 
-                                    return CustomContact(
-                                      username: userDoc['username'],
-                                      sender: emaillogin,
-                                      reciever: userDoc['email'],
-                                      lastMessage: firstMessage?.message,
-                                      time: firstMessage?.time,
-                                      darkmode: !isLightMode,
-                                    );
-                                  },
-                                ),
-                        ),
+                              //       return CustomContact(
+                              //         username: userDoc['username'],
+                              //         sender: emaillogin,
+                              //         reciever: userDoc['email'],
+                              //         lastMessage: firstMessage?.message,
+                              //         time: firstMessage?.time,
+                              //         darkmode: !isLightMode,
+                              //       );
+                              //     },
+                              //   ),
+                        :Container()),
                       ],
                     ),
                   );
@@ -219,7 +219,7 @@ class _ListOfUsersState extends State<ListOfUsers> {
     });
 
     // Simulate a delay to show loading indicator
-    Future.delayed(Duration(microseconds: 200), () {
+    Future.delayed(Duration(microseconds: 0), () {
       // Perform actual search or filter operation here
       setState(() {
         isLoading =
